@@ -6,6 +6,7 @@ const dotenv = require("dotenv").config();
 
 const connectionString = process.env.MONGO_URI;
 const app = express();
+const PORT = 3000;
 
 MongoClient.connect(connectionString, { useUnifiedTopology: true })
 	.then((client) => {
@@ -82,7 +83,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
 					console.log(err);
 				});
 		});
-		app.listen(3000, () => {
+		app.listen(process.env.PORT || PORT, () => {
 			console.log("listening on port 3000");
 		});
 	})
